@@ -2,6 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
   root 'users#show'
 
+  resources :appliances, only: [:index, :new, :create]
+
+  get 'users/:user_id/appliances', to: 'appliances#index', as: 'user_appliances'
+  get 'users/:user_id/appliances/:id', to: 'appliances#show', as: 'show_user_appliance'
+
+  get 'users/:user_id/services', to: 'services#index', as: 'user_services'
+  get 'users/:user_id/services/:id', to: 'services#show', as: 'show_user_services'
+
+
+
   scope :users, controller: 'users' do
     post 'create', as: 'create_user'
     get 'new', as: 'new_user'

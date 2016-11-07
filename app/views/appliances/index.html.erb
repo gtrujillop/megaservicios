@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-2">
+    <%= render partial: "layouts/user_menu" %>
+  </div>
+  <div class="col-md-10">
+
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8">
+        <h4> Electrodomésticos Registrados </h4>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+    <div class="row">
+      <div class="table-striped table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                Modelo
+              </th>
+              <th>
+                Tipo
+              </th>
+              <th>
+                Marca
+              </th>
+              <th>
+                Usuario
+              </th>
+              <th>
+                Última Revisión
+              </th>
+              <th>
+                Próxima Revisión
+              </th>
+              <th>
+                Detalles
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @appliances.each do |appliance|%>
+              <tr>
+                <td><%= appliance.model %></td>
+                <td><%= appliance.type_name %></td>
+                <td><%= appliance.brand_name %></td>
+                <td><%= appliance.user_name %></td>
+                <td><%= appliance.last_revision_date.try(:strftime, "%d/%m/%Y") %></td>
+                <td><%= appliance.next_revision_date.try(:strftime, "%d/%m/%Y") %></td>
+                <td><%= link_to "Detalles",
+                        appliance_path(id: appliance.id),
+                        method: :get,
+                        class: 'btn btn-success' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
