@@ -12,4 +12,9 @@ class User < ActiveRecord::Base
   def full_name
     first_name + ' ' + last_name
   end
+
+  # TODO Add roles and user_roles.
+  def is_admin?
+    true
+  end
 end
