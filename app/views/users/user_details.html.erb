@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-md-2">
+    <%= render partial: "layouts/user_menu" %>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">
+            <%= label_tag 'Nombre de Usuario:' %>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <%= text_field_tag 'first_name',
+                                  @user.full_name,
+                                  class:'form-control',
+                                  disabled: true %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= label_tag 'Email:' %>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <%= text_field_tag 'email',
+                                  @user.email,
+                                  class:'form-control',
+                                  disabled: true %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= label_tag 'Dirección:' %>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <%= text_field_tag 'email',
+                                  @user.address,
+                                  class:'form-control',
+                                  disabled: true %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= label_tag 'Teléfono:' %>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <%= text_field_tag 'email',
+                                  @user.phone,
+                                  class:'form-control',
+                                  disabled: true %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= label_tag 'Cliente Desde:' %>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <%= text_field_tag 'member_since',
+                                  @user.created_at,
+                                  class:'form-control',
+                                  disabled: true %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= label_tag 'Dispositivos Registrados:' %>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <%= text_field_tag 'appliances_num',
+                                  @user.appliances_count,
+                                  class:'form-control',
+                                  disabled: true %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <%= link_to "Back", user_list_path, class: 'btn btn-default'%>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+  </div>
+</div>

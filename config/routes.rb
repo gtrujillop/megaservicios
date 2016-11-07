@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
+  root 'users#show'
+
+  scope :users, controller: 'users' do
+    post 'create', as: 'create_user'
+    get 'new', as: 'new_user'
+    get 'edit', as: 'edit_user'
+    put 'update', as: 'update_user'
+    get 'index', as: 'user_list'
+    delete 'destroy', as: 'destroy_user'
+    get 'user_details', as: 'user_details'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
