@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'users#show'
 
-  resources :appliances, only: [:index, :new, :create]
+  resources :appliances, only: [:index, :new, :create, :show]
 
   get 'users/:user_id/appliances', to: 'appliances#index', as: 'user_appliances'
   get 'users/:user_id/appliances/:id', to: 'appliances#show', as: 'show_user_appliance'

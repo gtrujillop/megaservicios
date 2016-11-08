@@ -3,12 +3,11 @@
     <%= render partial: "layouts/user_menu" %>
   </div>
   <div class="col-md-10">
-
     <div class="row">
       <div class="col-md-2">
       </div>
       <div class="col-md-8">
-        <h4> Electrodomésticos Registrados </h4>
+        <h4> Detalles de Electrodoméstico </h4>
       </div>
       <div class="col-md-2">
       </div>
@@ -37,25 +36,22 @@
                 Próxima Revisión
               </th>
               <th>
-                Detalles
+                Servicios
               </th>
             </tr>
           </thead>
           <tbody>
-            <% @appliances.each do |appliance|%>
-              <tr>
-                <td><%= appliance.model %></td>
-                <td><%= appliance.type_name %></td>
-                <td><%= appliance.brand_name %></td>
-                <td><%= appliance.user_name %></td>
-                <td><%= appliance.last_revision_date.try(:strftime, "%d/%m/%Y") %></td>
-                <td><%= appliance.next_revision_date.try(:strftime, "%d/%m/%Y") %></td>
-                <td><%= link_to "Detalles",
-                        appliance_path(id: appliance.id),
-                        method: :get,
-                        class: 'btn btn-success' %></td>
-              </tr>
-            <% end %>
+            <tr>
+              <td><%= @appliance.model %></td>
+              <td><%= @appliance.type_name %></td>
+              <td><%= @appliance.brand_name %></td>
+              <td><%= @appliance.user_name %></td>
+              <td><%= @appliance.last_revision_date.try(:strftime, "%d/%m/%Y") %></td>
+              <td><%= @appliance.next_revision_date.try(:strftime, "%d/%m/%Y") %></td>
+              <td><%= link_to "Servicios",
+                      method: :get,
+                      class: 'btn btn-default' %></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -63,9 +59,12 @@
     <% if current_user.is_admin?  %>
       <div class="row">
         <div class="col-md-2 button-opt">
-          <%= link_to "Registrar Nuevo",
-              new_appliance_path(user_id: @user_id),
+          <%= link_to "Editar",
               class: 'btn btn-success'%>
+        </div>
+        <div class="col-md-2 button-opt">
+          <%= link_to "Eliminar",
+              class: 'btn btn-danger'%>
         </div>
         <div class="col-md-10">
         </div>

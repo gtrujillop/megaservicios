@@ -21,10 +21,18 @@ class Appliance < ActiveRecord::Base
   end
 
   def last_revision_date
-    last_service.registered_at
+    if last_service
+      last_service.registered_at
+    else
+      Date.today
+    end
   end
 
   def next_revision_date
-    last_service.next_service_date
+    if last_service
+      last_service.next_service_date
+    else
+      Date.today
+    end
   end
 end
