@@ -62,10 +62,11 @@
     </div>
     <% if current_user.is_admin?  %>
       <div class="row">
-        <div class="col-md-2 button-opt">
+        <div class="col-md-2">
           <%= link_to "Registrar Nuevo",
               new_appliance_path(user_id: @user_id),
-              class: 'btn btn-success'%>
+              method: :get,
+              class: 'btn btn-success' %>
         </div>
         <div class="col-md-10">
         </div>

@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-md-3">
+
+  </div>
+  <div class="col-md-6">
+    <h2>Nuevo Servicio para <%=@user.full_name%></h2>
+
+  </div>
+  <div class="col-md-3">
+
+  </div>
+</div>
+<%= form_for @service, method: :post, url: new_user_service_path do |f| %>
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :dispositivo, for: 'appliance_id' %>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.select(:appliance_id, class: 'form-control') do %>
+              <% @appliances.each do |appliance| -%>
+                <%= content_tag(:option, appliance.model, value: appliance.id) %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :valor, for: 'cost' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.number_field :cost,
+                value: 0.0,
+                class: 'form-control',
+                required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :comentarios, for: 'comments' %>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.text_area :comments, required: true, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :próximo_servicio, for: 'next_service_date' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.date_field :next_service_date,
+                class: 'form-control',
+                required: true %>
+          </div>
+        </div>
+      </div>
+
+      <%= f.hidden_field :registered_at, value: Date.today %>
+
+      <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.submit "Guardar", class: 'btn btn-primary'%>
+            <%= link_to "Cancelar",
+                user_services_path(user_id: @user.id),
+                class: 'btn btn-danger' %>
+          </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+<% end %>

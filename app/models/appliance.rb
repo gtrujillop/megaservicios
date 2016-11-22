@@ -4,6 +4,11 @@ class Appliance < ActiveRecord::Base
   belongs_to :brand
   has_many :services
 
+  validates :model, presence: true, length: { maximum: 75 }
+
+  scope :by_user, -> (user_id) { where("user_id = ?", "#{user_id}") }
+
+
   def brand_name
     brand.name
   end

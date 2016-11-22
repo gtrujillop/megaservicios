@@ -49,6 +49,7 @@
               <td><%= @appliance.last_revision_date.try(:strftime, "%d/%m/%Y") %></td>
               <td><%= @appliance.next_revision_date.try(:strftime, "%d/%m/%Y") %></td>
               <td><%= link_to "Servicios",
+                      user_services_path(user_id: @appliance.user_id),
                       method: :get,
                       class: 'btn btn-default' %></td>
             </tr>

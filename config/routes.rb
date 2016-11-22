@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/services', to: 'services#index', as: 'user_services'
   get 'users/:user_id/services/:id', to: 'services#show', as: 'show_user_services'
-
+  get 'users/:user_id/service', to: 'services#new', as: 'new_user_service'
+  post 'users/:user_id/service', to: 'services#create', as: 'create_user_service'
 
 
   scope :users, controller: 'users' do
