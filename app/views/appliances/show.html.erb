@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-md-2">
+    <%= render partial: "layouts/user_menu" %>
+  </div>
+  <div class="col-md-10">
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8">
+        <h4> Detalles de Electrodoméstico </h4>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+    <div class="row">
+      <div class="table-striped table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                Modelo
+              </th>
+              <th>
+                Tipo
+              </th>
+              <th>
+                Marca
+              </th>
+              <th>
+                Usuario
+              </th>
+              <th>
+                Última Revisión
+              </th>
+              <th>
+                Próxima Revisión
+              </th>
+              <th>
+                Servicios
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @appliance.model %></td>
+              <td><%= @appliance.type_name %></td>
+              <td><%= @appliance.brand_name %></td>
+              <td><%= @appliance.user_name %></td>
+              <td><%= @appliance.last_revision_date.try(:strftime, "%d/%m/%Y") %></td>
+              <td><%= @appliance.next_revision_date.try(:strftime, "%d/%m/%Y") %></td>
+              <td><%= link_to "Servicios",
+                      user_services_path(user_id: @appliance.user_id),
+                      method: :get,
+                      class: 'btn btn-default' %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% if current_user.is_admin?  %>
+      <div class="row">
+        <div class="col-md-2 button-opt">
+          <%= link_to "Editar",
+              class: 'btn btn-success'%>
+        </div>
+        <div class="col-md-2 button-opt">
+          <%= link_to "Eliminar",
+              class: 'btn btn-danger'%>
+        </div>
+        <div class="col-md-10">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

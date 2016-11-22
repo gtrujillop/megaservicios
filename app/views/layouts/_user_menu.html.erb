@@ -5,7 +5,8 @@
   </button>
   <ul class="dropdown-menu">
     <% if current_user.is_admin? %>
-      <li><%= link_to "Clientes" %></li>
+      <li><%= link_to "Clientes", user_list_path %></li>
+      <li><%= link_to "Electrodomésticos", appliances_path %></li>
       <li><%= link_to "Servicios" %></li>
       <li><%= link_to "Reportes" %></li>
     <% end %>

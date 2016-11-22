@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020225349) do
+ActiveRecord::Schema.define(version: 20161107225236) do
 
   create_table "appliances", force: :cascade do |t|
     t.string   "model"
@@ -38,8 +38,9 @@ ActiveRecord::Schema.define(version: 20161020225349) do
     t.integer  "appliance_id"
     t.decimal  "cost"
     t.text     "comments"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.date     "next_service_date"
   end
 
   add_index "services", ["appliance_id"], name: "index_services_on_appliance_id"

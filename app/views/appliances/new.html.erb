@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-md-3">
+
+  </div>
+  <div class="col-md-6">
+    <h2>Nuevo Electrodoméstico</h2>
+
+  </div>
+  <div class="col-md-3">
+
+  </div>
+</div>
+<%= form_for @appliance, method: :post, url: appliances_path do |f| %>
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :modelo %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.text_field :model, class: 'form-control', required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :usuario, for: 'user_id' %>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.select(:brand_id, class: 'form-control') do %>
+              <% @users.each do |user| -%>
+                <%= content_tag(:option, user.full_name, value: user.id) %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :marca, for: 'brand_id' %>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.select(:brand_id, class: 'form-control') do %>
+              <% @brands.each do |brand| -%>
+                <%= content_tag(:option, brand.name, value: brand.id) %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :tipo, for: 'type_id' %>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.select(:type_id, class: 'form-control') do %>
+              <% @types.each do |type| -%>
+                <%= content_tag(:option, type.name, value: type.id) %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <% if @users.length == 1 %>
+        <%= f.hidden_field :user_id, value: @users.first.id %>
+      <% end %>
+
+      <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.submit "Guardar", class: 'btn btn-primary'%>
+            <%= link_to "Cancel",
+                appliances_path,
+                class: 'btn btn-danger' %>
+          </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+<% end %>
