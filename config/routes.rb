@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'main/home'
+
   devise_for :users
   root 'users#show'
 

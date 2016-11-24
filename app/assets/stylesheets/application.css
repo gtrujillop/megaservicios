@@ -13,3 +13,84 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+body, html {
+  height: 100%!important;
+  width: 100%!important;
+  /* overflow: hidden; */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    transition: top 0.2s ease-in-out;
+    width: 100%;
+}
+
+.nav-up {
+    top: -150px;
+}
+
+.menu a:link {
+  display: block;
+  font-size: 18px;
+  font-variant: small-caps;
+  color: black;
+  padding: 15px 35px;
+  margin: 1em 0;
+  font-weight: bold;
+}
+
+.menu a:visited {
+  color: black;
+}
+
+.menu a:hover {
+  text-decoration: none;
+  color: white;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#home {
+  background-image: url(mg_web_bg.png);
+  background-attachment: fixed;
+  background-position: top center;
+  background-repeat: no-repeat;
+  height: 85%;
+  width: 100%;
+}
+
+#noticias {
+  background-color: white;
+  height: 85%;
+  width: 100%;
+}
+
+#servicios {
+  background-image: url(mg_bg2.png);
+  background-attachment: scroll;
+  background-position: top center;
+  background-repeat: no-repeat;
+  height: 85%;
+  width: 100% ;
+}
+
+#contactenos {
+  background-color: white;
+  height: 85%;
+  width: 100%;
+}
+
+.logos {
+  display: block;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
