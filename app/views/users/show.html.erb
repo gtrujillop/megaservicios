@@ -14,6 +14,10 @@
       </div>
     </div>
     <div class="row">
+      <br>
+      <br>
+    </div>
+    <div class="row">
       <div class="col-md-6">
         <h4> Servicios / día </h4>
         <%= line_chart Service.group_by_day(:registered_at, 'count') %>
