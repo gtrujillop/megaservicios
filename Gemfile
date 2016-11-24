@@ -26,8 +26,9 @@ gem 'bootstrap-sass'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'active_model_serializers', '~> 0.9.4'
 gem 'validates_timeliness', '~> 4.0'
-gem 'geocoder'
-
+# gem 'geocoder'
+gem 'chartkick'
+gem 'dateslices'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -59,4 +60,5 @@ end
 group :production do
   gem 'pg', '0.17.1'
   gem 'rails_12factor', '0.0.2'
+  gem 'groupdate'
 end

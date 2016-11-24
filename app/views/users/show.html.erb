@@ -4,6 +4,38 @@
   </div>
   <div class="col-md-8">
     <div class="row">
+      <div class="col-md-6">
+        <h4> Total de Usuarios:  </h4>
+        <%= User.count %>
+      </div>
+      <div class="col-md-6">
+        <h4> Total de Servicios Realizados </h4>
+        <%= Service.count %>
+      </div>
+    </div>
+    <div class="row">
+      <br>
+      <br>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h4> Servicios / día </h4>
+        <%= line_chart Service.group_by_day(:registered_at, 'count') %>
+      </div>
+      <div class="col-md-6">
+        <h4> Nuevos Usuarios / mes </h4>
+        <%= column_chart User.group_by_month(:created_at, 'count') %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h4> Tipo de Electrodoméstico </h4>
+        <%= pie_chart Appliance.joins(:type).group(:name).count %>
+      </div>
+      <div class="col-md-6">
+        <h4> Ingresos por Servicios / mes </h4>
+        <%= column_chart Service.group_by_month(:created_at, 'sum', 'cost') %>
+      </div>
     </div>
   </div>
   <div class="col-md-2">
