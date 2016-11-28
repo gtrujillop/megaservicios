@@ -29,6 +29,10 @@ gem 'validates_timeliness', '~> 4.0'
 # gem 'geocoder'
 gem 'chartkick'
 gem 'dateslices'
+# for cron jobs in rails
+gem 'crono'
+gem 'delayed_job_active_record'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
