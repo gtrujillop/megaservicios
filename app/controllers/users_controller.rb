@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
+    @chart_presenter = ChartPresenter
   end
 
   def user_details
