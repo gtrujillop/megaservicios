@@ -11,7 +11,7 @@ class Service < ActiveRecord::Base
   end
 
   def appliance_type
-    appliance.type
+    appliance.type_name
   end
 
   def appliance_brand_name
