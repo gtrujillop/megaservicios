@@ -21,8 +21,13 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'devise'
+#HAML para un mejor HTML
+gem 'haml-rails'
+
+#Bootstrap
 gem 'bootstrap-sass'
+
+gem 'devise'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'active_model_serializers', '~> 0.9.4'
 gem 'validates_timeliness', '~> 4.0'
@@ -58,7 +63,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '0.17.1'
+#  gem 'pg', '0.17.1'
   gem 'rails_12factor', '0.0.2'
   gem 'groupdate'
 end

@@ -1,0 +1,16 @@
+.container-fluid.relative#header
+  #logo
+    =link_to(image_tag('logo.png'), root_path)
+  #menu
+    %ul.menu
+      %li
+        %a{:href => "#"} servicios
+      %li 
+        %a{:href => "#"} noticias
+      %li 
+        %a{:href => "#"} contactenos
+  #contact
+    %p#phone.text-bold
+      %span.glyphicon.glyphicon-earphone.middle 
+      %span.hours 24/7
+      %span.num.text-bold.middle (+57) 301 426 38 98

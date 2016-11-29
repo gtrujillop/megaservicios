@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root 'users#show'
 
+
+  devise_for :users
+  root 'landing#home'
+  get 'users/show'
+  
   resources :appliances, only: [:index, :new, :create, :show]
 
   get 'users/:user_id/appliances', to: 'appliances#index', as: 'user_appliances'
