@@ -9,18 +9,20 @@
     <% @services.each do |service| %>
       <div>
         <p>
-          <h4>Usuario: </h4> <%= service.appliance.user_name %>
+          <h4>Usuario: </h4> <%= service.user_name %>
           <br>
-          <h4>Dirección: </h4> <%= service.appliance.user_address %>
+          <h4>Dirección: </h4> <%= service.user_address %>
           <br>
-          <h4>Teléfono: </h4> <%= service.appliance.user_phone %>
+          <h4>Teléfono: </h4> <%= service.user_phone %>
         </p>
       </div>
       <div>
         <p>
-          <h4>Dispositivo: </h4> <%= service.appliance.type_name %>
+          <h4>Dispositivo: </h4> <%= service.appliance_type %>
           <br>
-          <h4>Marca: </h4> <%= service.appliance.brand_name %>
+          <h4>Marca: </h4> <%= service.appliance_brand_name %>
+          <br>
+          <h4>Modelo: </h4> <%= service.appliance_model %>
           <br>
           <h4>Último valor cobrado: </h4> <%= service.cost %>
         </p>
