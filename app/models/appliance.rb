@@ -21,6 +21,14 @@ class Appliance < ActiveRecord::Base
     user.full_name
   end
 
+  def user_address
+    user.address
+  end
+
+  def user_phone
+    user.phone
+  end
+
   def last_service
     @last_service ||= services.last
   end
