@@ -1,13 +1,14 @@
 class ServicesReminderMailer < ApplicationMailer
 
 	def services_for_tomorrow(services)
-		@user = current_user
+		# TODO Only Admin users
+		@user = User.first
     @services = services
 		mail(to: @user.email, subject: "Recordatorio: Servicios por atender mañana #{Date.tomorrow}")
 	end
 
   def services_for_today(services)
-    @user = current_user
+		@user = User.first
     @services = services
 		mail(to: @user.email, subject: "Recordatorio: Servicios por atender hoy #{Date.today}")
 	end
