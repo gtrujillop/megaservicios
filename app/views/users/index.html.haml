@@ -1,0 +1,23 @@
+.jumbotron 
+  %h2.text-center Clientes Registrados
+  .table-responsive
+    %table.table.table-hover
+      %thead
+        %tr
+          %th Nombre
+          %th Teléfono
+          %th Dirección
+          %th Email
+          %th Electrodomésticos
+          %th Historial          
+          %th 
+        -@users.each do |user|
+          %tr
+            %td= user.full_name
+            %td= user.phone
+            %td= user.address
+            %td= user.email
+            %td= link_to "Ver", user_appliances_path(user_id: user.id), class: 'btn btn-info'
+            %td= link_to "Historial", user_services_path(user_id: user.id), class: 'btn btn-default'
+  -if current_user.is_admin?
+    =link_to "Registrar Usuario", new_user_path, class: 'btn btn-success'

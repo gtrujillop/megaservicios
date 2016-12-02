@@ -1,16 +1,13 @@
 .container-fluid.relative#header
   #logo
     =link_to(image_tag('logo.png'), root_path)
-  #menu
-    %ul.menu
-      %li
-        %a{:href => "#"} servicios
-      %li 
-        %a{:href => "#"} noticias
-      %li 
-        %a{:href => "#"} contactenos
+  #menu.link-blue
+    %a{href: '/articles/2'} 
+      [especialistas en el mantenimiento preventivo 
+      %br
+      y correctivo de sus electrodomésticos..]
   #contact
     %p#phone.text-bold
       %span.glyphicon.glyphicon-earphone.middle 
       %span.hours 24/7
-      %span.num.text-bold.middle (+57) 301 426 38 98
+      %span.num.text-bold.middle (+57) 314 714 56 47

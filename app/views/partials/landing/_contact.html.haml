@@ -1,0 +1,14 @@
+= form_for @contact do |f|
+  %h2.text-center.text-white.text-bold ¡Contáctenos!
+  .field
+    = f.text_field :full_name, :type => "text", :required => true, :placeholder => "Nombre(s)"
+  .field
+    = f.text_field :email, :type => "email", :placeholder => "Correo electrónico"
+  .field
+    = f.text_field :phone, :type => "text", :required => true, :placeholder => "Número teléfonico" 
+  .field
+    = f.text_field :address, :type => "text", :required => true, :placeholder => "Dirección"
+  .field
+    = f.text_area :problem, :type => "text", :required => true, :placeholder => "Breve descripción del problema.."
+  .actions
+    = f.submit 'save', :class => "text-bold text-center small-caps"

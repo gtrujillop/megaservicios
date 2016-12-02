@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161129002059) do
 
   create_table "appliances", force: :cascade do |t|
@@ -25,6 +26,13 @@ ActiveRecord::Schema.define(version: 20161129002059) do
   add_index "appliances", ["brand_id"], name: "index_appliances_on_brand_id"
   add_index "appliances", ["type_id"], name: "index_appliances_on_type_id"
   add_index "appliances", ["user_id"], name: "index_appliances_on_user_id"
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
@@ -59,6 +67,16 @@ ActiveRecord::Schema.define(version: 20161129002059) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "full_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "address"
+    t.text     "problem"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "services", force: :cascade do |t|
     t.date     "registered_at"

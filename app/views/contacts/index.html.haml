@@ -1,0 +1,25 @@
+=render partial: "layouts/user_menu"
+
+%h1 Listing contacts
+
+%table
+  %thead
+    %tr
+      %th Full name
+      %th Email
+      %th Phone
+      %th Address
+      %th Problem
+      %th
+      %th
+
+  %tbody
+    - @contacts.each do |contact|
+      %tr
+        %td= contact.full_name
+        %td= contact.email
+        %td= contact.phone
+        %td= contact.address
+        %td= contact.problem
+        %td= link_to 'Show', contact
+        %td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
