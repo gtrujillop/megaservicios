@@ -27,6 +27,12 @@ gem 'haml-rails'
 #Bootstrap
 gem 'bootstrap-sass'
 
+#Toastr para notificaciones
+gem 'toastr-rails'
+
+#Paginacion Articulos
+gem 'will_paginate'
+
 gem 'devise'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'active_model_serializers', '~> 0.9.4'

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :articles
+  resources :contacts, except: [:new]
   devise_for :users
   root 'landing#home'
   get 'users/show'
