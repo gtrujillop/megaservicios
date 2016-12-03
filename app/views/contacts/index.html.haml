@@ -1,25 +1,25 @@
-=render partial: "layouts/user_menu"
+.jumbotron 
+  %h2.text-center Lista de Solicitudes
+  .table-responsive
+    %table.table.table-hover
+      %thead
+        %tr
+          %th Nombre
+          %th Teléfono
+          %th Dirección
+          %th Problema
+          %th Correo
+          %th 
+          %th 
 
-%h1 Listing contacts
-
-%table
-  %thead
-    %tr
-      %th Full name
-      %th Email
-      %th Phone
-      %th Address
-      %th Problem
-      %th
-      %th
-
-  %tbody
-    - @contacts.each do |contact|
-      %tr
-        %td= contact.full_name
-        %td= contact.email
-        %td= contact.phone
-        %td= contact.address
-        %td= contact.problem
-        %td= link_to 'Show', contact
-        %td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %tbody
+        - @contacts.each do |contact|
+          %tr
+            %td= truncate(contact.full_name,length:10)
+            %td= truncate(contact.phone,length:10)
+            %td= truncate(contact.address,length:10)
+            %td= truncate(contact.problem,length:15)
+            %td= truncate(contact.email,length:10)
+            %td= link_to 'Ver', contact, :class => "btn btn-info"
+            %td= link_to 'Destruir', contact, :method => :delete, :data => { :confirm => '¿Estas seguro?' }, :class => "btn btn-danger"
+  = will_paginate @contacts, :previous_label => "anterior", :next_label => "siguiente", :class => "text-center"

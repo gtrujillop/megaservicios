@@ -1,24 +1,22 @@
-=render partial: "layouts/user_menu"
-%h1 Listing articles
+.jumbotron 
+  %h2.text-center Lista de Solicitudes
+  .table-responsive
+    %table.table.table-hover
+      %thead
+        %tr
+          %th Titulo
+          %th Mensaje
+          %th
+          %th
+          %th
 
-%table
-  %thead
-    %tr
-      %th Title
-      %th Body
-      %th
-      %th
-      %th
-
-  %tbody
-    - @articles.each do |article|
-      %tr
-        %td= article.title
-        %td= article.body
-        %td= link_to 'Show', article
-        %td= link_to 'Edit', edit_article_path(article)
-        %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Article', new_article_path
+      %tbody
+        - @articles.each do |article|
+          %tr
+            %td= truncate(article.title,length:10)
+            %td= truncate(article.body,length:20)
+            %td= link_to 'Ver', article, target: "_blank", :class => "btn btn-info"
+            %td= link_to 'Editar', edit_article_path(article), :class => "btn btn-warning"
+            %td= link_to 'Destruir', article, :method => :delete, :data => { :confirm => '¿Estas seguro?' }, :class => "btn btn-danger"
+  = link_to 'Nuevo Articulo', new_article_path, :class => "btn btn-success"
+= will_paginate @articles, :previous_label => "anterior", :next_label => "siguiente", :class => "text-center"
