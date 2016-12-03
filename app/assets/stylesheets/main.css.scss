@@ -2,7 +2,29 @@
 @import "bootstrap";
 @import 'bootstrap/theme';
 
+body {
+  background-color: #f7f7f7;
+}
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
 
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+}
+
+#bs-example-navbar-collapse-1 > ul > li > a:hover {
+  color: #3da6f2;
+}
+
+.text-center {
+  text-align: center;
+  display: block;
+}
 /* footer */
 
 footer {

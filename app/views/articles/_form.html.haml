@@ -7,10 +7,10 @@
           %li= msg
 
   .field
-    = f.label :title
-    = f.text_field :title
+    %p Titulo:
+    = f.text_field :title, :style => "width: 100%;font-size: 2em;"
   .field
-    = f.label :body
-    = f.text_area :body
+    %p Cuerpo:
+    = f.text_area :body, :style => "width: 100%;font-size: 1.2em;"
   .actions
-    = f.submit 'Save'
+    = f.submit 'Guardar', :class => "btn btn-success"

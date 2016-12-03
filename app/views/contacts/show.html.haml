@@ -1,22 +1,21 @@
-=render partial: "layouts/user_menu"
-
 %p#notice= notice
+.container
+  .col-xs-10.jumbotron.col-xs-offset-1
+    %p
+      %b Nombre:
+      = @contact.full_name
+    %p
+      %b Correo:
+      = @contact.email
+    %p
+      %b Teléfono:
+      = @contact.phone
+    %p
+      %b Dirección:
+      = @contact.address
+    %p
+      %b Problema:
+      = @contact.problem
 
-%p
-  %b Full name:
-  = @contact.full_name
-%p
-  %b Email:
-  = @contact.email
-%p
-  %b Phone:
-  = @contact.phone
-%p
-  %b Address:
-  = @contact.address
-%p
-  %b Problem:
-  = @contact.problem
+= link_to 'Volver atrás', contacts_path, :class => "text-center"
 
-\|
-= link_to 'Back', contacts_path

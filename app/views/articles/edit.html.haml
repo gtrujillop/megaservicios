@@ -1,8 +1,7 @@
-=render partial: "layouts/user_menu"
-%h1 Editing article
+%p#notice= notice
+.container
+  .col-xs-10.jumbotron.col-xs-offset-1
+    %h2 Editar articulo
+    = render 'form'
+= link_to 'Volver atrás', articles_path, :class => "text-center"
 
-= render 'form'
-
-= link_to 'Show', @article
-\|
-= link_to 'Back', articles_path
