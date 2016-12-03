@@ -4,6 +4,7 @@
     %table.table.table-hover
       %thead
         %tr
+          %th #
           %th Nombre
           %th Teléfono
           %th Dirección
@@ -15,6 +16,7 @@
       %tbody
         - @contacts.each do |contact|
           %tr
+            %td= contact.id
             %td= truncate(contact.full_name,length:10)
             %td= truncate(contact.phone,length:10)
             %td= truncate(contact.address,length:10)

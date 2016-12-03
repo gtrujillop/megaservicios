@@ -17,6 +17,9 @@
             %td= truncate(article.body,length:20)
             %td= link_to 'Ver', article, target: "_blank", :class => "btn btn-info"
             %td= link_to 'Editar', edit_article_path(article), :class => "btn btn-warning"
-            %td= link_to 'Eliminar', article, :method => :delete, :data => { :confirm => '¿Estas seguro?' }, :class => "btn btn-danger"
+            -if article.id != 1 && article.id != 2
+              %td= link_to 'Eliminar', article, :method => :delete, :data => { :confirm => '¿Estas seguro?' }, :class => "btn btn-danger"
+            -else
+              %td 
   = link_to 'Nuevo Articulo', new_article_path, :class => "btn btn-success"
 = will_paginate @articles, :previous_label => "anterior", :next_label => "siguiente", :class => "text-center"
