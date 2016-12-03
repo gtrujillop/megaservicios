@@ -1,5 +1,5 @@
 .jumbotron 
-  %h2.text-center Lista de Solicitudes
+  %h2.text-center Lista de Articulos
   .table-responsive
     %table.table.table-hover
       %thead
@@ -17,6 +17,6 @@
             %td= truncate(article.body,length:20)
             %td= link_to 'Ver', article, target: "_blank", :class => "btn btn-info"
             %td= link_to 'Editar', edit_article_path(article), :class => "btn btn-warning"
-            %td= link_to 'Destruir', article, :method => :delete, :data => { :confirm => '¿Estas seguro?' }, :class => "btn btn-danger"
+            %td= link_to 'Eliminar', article, :method => :delete, :data => { :confirm => '¿Estas seguro?' }, :class => "btn btn-danger"
   = link_to 'Nuevo Articulo', new_article_path, :class => "btn btn-success"
 = will_paginate @articles, :previous_label => "anterior", :next_label => "siguiente", :class => "text-center"
