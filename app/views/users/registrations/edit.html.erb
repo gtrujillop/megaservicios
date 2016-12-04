@@ -1,12 +1,12 @@
 <div class="container">
   <div class="col-xs-6 jumbotron text-center col-xs-offset-3">
-    <h2>Editar <%= resource_name.to_s.humanize %></h2>
+    <h3>Edita tu cuenta</h3>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
 
       <div class="field">
-        <%= f.label :email %><br />
+        <p>Email:</p>
         <%= f.email_field :email, autofocus: true %>
       </div>
 
@@ -15,7 +15,8 @@
       <% end %>
 
       <div class="field">
-        <%= f.label :password %><i><em> (<%= @minimum_password_length %> caracteres minimo)</em></i><br />
+        <br/>
+        <p>Nueva clave:</p><i><em> (<%= @minimum_password_length %> caracteres minimo)</em></i><br />
         <%= f.password_field :password, autocomplete: "off" %>
         <% if @minimum_password_length %>
           <br />
@@ -23,12 +24,13 @@
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
+        <p>Confirmar nueva clave:</p>
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
       <div class="field">
-        <%= f.label :current_password %><br />
+        <br/>
+        <p>Clave actual:</p>
         <%= f.password_field :current_password, autocomplete: "off" %>
       </div>
 

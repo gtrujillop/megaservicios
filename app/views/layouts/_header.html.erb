@@ -12,7 +12,10 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav text-center">            
-              <% if current_user.is_admin? %>
+              <% if current_user.is_admin? %>              
+                <li>
+                  <%= link_to "Home", root_path, :class => 'navbar-link' %>
+                </li>            
                 <li>
                   <%= link_to "Solicitudes", contacts_path, :class => 'navbar-link' %>
                 </li>
@@ -23,20 +26,20 @@
                   <%= link_to "Electrodomésticos", appliances_path, :class => 'navbar-link' %>
                 </li>
                 <li>
-                  <%= link_to "Servicios", :class => 'navbar-link' %>
+                  <%= link_to "Servicios",'#', :class => 'navbar-link' %>
                 </li>
                 <li>
-                  <%= link_to "Reportes", :class => 'navbar-link' %>
+                  <%= link_to "Reportes", users_show_path, :class => 'navbar-link' %>
                 </li>
                 <li>
-                  <%= link_to "Landing", articles_path, :class => 'navbar-link' %>
+                  <%= link_to "Contenido", articles_path, :class => 'navbar-link' %>
                 </li>  
               <% end %>
               <li>
-                <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
+                <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %>
               </li>
               <li>
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
               </li>
           </ul> 
         </div>
