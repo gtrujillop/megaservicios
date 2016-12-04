@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20161202141926) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "crono_jobs", force: :cascade do |t|
     t.string   "job_id",            null: false
     t.text     "log"
@@ -78,8 +77,6 @@ ActiveRecord::Schema.define(version: 20161202141926) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
-=======
->>>>>>> b8c538cafe1448018f15f587abec86f1a07c74a8
   create_table "services", force: :cascade do |t|
     t.date     "registered_at"
     t.integer  "appliance_id"
