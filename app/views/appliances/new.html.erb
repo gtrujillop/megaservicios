@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.select(:brand_id, class: 'form-control') do %>
+            <%= f.select(:user_id, class: 'form-control') do %>
               <% @users.each do |user| -%>
                 <%= content_tag(:option, user.full_name, value: user.id) %>
               <% end %>
