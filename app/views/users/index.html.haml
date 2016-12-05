@@ -18,6 +18,6 @@
             %td= user.address
             %td= user.email
             %td= link_to "Ver", user_appliances_path(user_id: user.id), class: 'btn btn-info'
-            %td= link_to "Historial", user_services_path(user_id: user.id), class: 'btn btn-default'
+            %td= link_to "Historial", user_services_path(user_id: user.id), class: 'btn btn-primary'
   -if current_user.is_admin?
     =link_to "Registrar Usuario", new_user_path, class: 'btn btn-success'

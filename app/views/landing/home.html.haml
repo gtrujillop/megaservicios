@@ -3,7 +3,7 @@
     =truncate(article.title,length:40)
   %p.text-justify 
     =article.body
-%p.text-right David A. López
+%p.text-right.link-blue= link_to 'David A. López', users_show_path, :target => "_blank"
 %span.small-caps.text-bold.link-blue
   - @statics.drop(1).each do |article|
     = link_to '-'+truncate(article.title,length:30), article

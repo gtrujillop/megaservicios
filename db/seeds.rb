@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Type.create([{ name: 'Nevera' }, { name: 'Lavadora' }, { name: 'Microondas' }, { name: 'Plancha' }, { name: 'Audio y TV' }, { name: 'Calentador' }, { name: 'Licuadora' }, { name: 'Otro' }])
+Brand.create([{ name: 'Haceb' }, { name: 'General Electric' }, { name: 'Samsung' }, { name: 'Centrales' }, { name: 'LG' }, { name: 'Whirpool' }, { name: 'Mabe' }, { name: 'Otra' }])

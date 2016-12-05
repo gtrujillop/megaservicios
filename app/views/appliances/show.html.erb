@@ -48,7 +48,7 @@
               <td><%= link_to "Servicios",
                       user_services_path(user_id: @appliance.user_id),
                       method: :get,
-                      class: 'btn btn-default' %></td>
+                      class: 'btn btn-primary' %></td>
             </tr>
           </tbody>
         </table>
@@ -56,13 +56,9 @@
     </div>
     <% if current_user.is_admin?  %>
       <div class="row">
-        <div class="col-md-2 button-opt">
-          <%= link_to "Editar",
-              class: 'btn btn-success'%>
-        </div>
-        <div class="col-md-2 button-opt">
-          <%= link_to "Eliminar",
-              class: 'btn btn-danger'%>
+        <div class="col-md-4 button-opt"> 
+          <%= link_to "Editar", '#', class: 'btn btn-warning'%>
+          <%= link_to "Eliminar", '#', :method => :delete, :data => { :confirm => '¿Estas seguro?' }, class: 'btn btn-danger'%>
         </div>
         <div class="col-md-10">
         </div>

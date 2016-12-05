@@ -26,7 +26,7 @@ class ChartPresenter
   end
 
   def self.appliance_type_names
-    @appliance_type_names ||= Appliance.joins(:type).group(:name).count
+    @appliance_type_names = Appliance.joins(:type).group(:name).count
   end
 
   def self.new_users

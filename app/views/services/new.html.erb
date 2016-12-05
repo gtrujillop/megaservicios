@@ -1,23 +1,9 @@
-<div class="row">
-  <div class="col-md-3">
-
-  </div>
-  <div class="col-md-6">
-    <h2>Nuevo Servicio para <%=@user.full_name%></h2>
-
-  </div>
-  <div class="col-md-3">
-
-  </div>
-</div>
 <%= form_for @service, method: :post, url: new_user_service_path do |f| %>
   <div class="row">
-    <div class="col-md-3">
-
-    </div>
-    <div class="col-md-6">
+    <div class="col-md-8 jumbotron col-md-offset-2">
 
       <div class="row">
+        <h2>Nuevo Servicio para <%=@user.full_name%></h2>
         <div class="col-md-6">
           <%= f.label :dispositivo, for: 'appliance_id' %>
         </div>
@@ -82,7 +68,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.submit "Guardar", class: 'btn btn-primary'%>
+            <%= f.submit "Guardar", class: 'btn btn-success'%>
             <%= link_to "Cancelar",
                 user_services_path(user_id: @user.id),
                 class: 'btn btn-danger' %>
@@ -92,9 +78,6 @@
 
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
-
     </div>
   </div>
 <% end %>
