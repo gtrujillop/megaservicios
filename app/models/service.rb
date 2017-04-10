@@ -1,4 +1,5 @@
 class Service < ActiveRecord::Base
+  include AASM
   belongs_to :appliance
 
   scope :ultimos, ->{ order("created_at DESC") }
@@ -12,11 +13,11 @@ class Service < ActiveRecord::Base
     state :completed
     
     event :complete do
-      transitions from :in_draft, to: :completed
+      transitions from: :in_draft, to: :completed
     end
     
     event :uncomplete do
-      transitions from :completed, to: :in_draft
+      transitions from: :completed, to: :in_draft
     end
     
   end
