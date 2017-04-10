@@ -1,5 +1,3 @@
-%h1 Dailys#index
-%p Find me in app/views/dailys/index.html.haml
 %table
   %tr
     %th
@@ -14,14 +12,15 @@
       estado   
     
   - @services.each do |service|
-    %tr
-      %td
-        = service.next_service_date
-      %td
-        = link_to service.appliance_id, appliance_path(id: service.appliance.id), method: :get
-      %td
-        = service.cost
-      %td
-        = service.comments
-      %td
-        = service.state
+    -unless service.state == "completed"
+      %tr
+        %td
+          = service.next_service_date
+        %td
+          = link_to service.appliance_id, appliance_path(id: service.appliance.id), method: :get
+        %td
+          = service.cost
+        %td
+          = service.comments
+        %td
+          = service.state

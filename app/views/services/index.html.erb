@@ -21,6 +21,9 @@
               <th>
                 Próxima Revisión
               </th>
+              <th>
+                ¿Realizada?
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -33,6 +36,13 @@
                 <td><%= service.cost %></td>
                 <td><%= service.comments %></td>
                 <td><%= service.next_service_date.try(:strftime, "%d/%m/%Y") %></td>
+                <td>
+                  <% if service.may_complete? %>
+                    <%= link_to "Completar", "/services/#{service.id}/complete", method: :put %>
+                  <% else %>
+                    <%= link_to "Descompletar", "/services/#{service.id}/uncomplete", method: :put %>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>
