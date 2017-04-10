@@ -10,7 +10,7 @@ class ContactsController < ApplicationController
       render 'dashb'
     else
       @contacts = Contact.in_draft.ultimos
-      $totalrevisados = @contacts.size
+      $totalrevised = @contacts.size
       render 'index'      
     end
   end

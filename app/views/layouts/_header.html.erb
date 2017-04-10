@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav text-center">            
               <% if current_user.is_admin? %>
-                <% if !$totalrevisados.nil? and $totalrevisados > 0 %>
+                <% if $totalrevised.present? and $totalrevised > 0 %>
                   <li>
                     <span class="alert-n"><%= $totalrevisados %></span>
                   </li>
