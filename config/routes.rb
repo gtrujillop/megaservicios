@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'dailys/index'
+
+  get 'daily/index'
+
   resources :types
   resources :brands
   get 'search/create'
@@ -23,7 +27,6 @@ Rails.application.routes.draw do
   get 'users/:user_id/service', to: 'services#new', as: 'new_user_service'
   post 'users/:user_id/service', to: 'services#create', as: 'create_user_service'
 
-
   scope :users, controller: 'users' do
     post 'create', as: 'create_user'
     get 'new', as: 'new_user'
@@ -32,7 +35,7 @@ Rails.application.routes.draw do
     get 'index', as: 'user_list'
     delete 'destroy', as: 'destroy_user'
     get 'user_details', as: 'user_details'
-     get 'edit_user_details', as: 'edit_user_details'
+    get 'edit_user_details', as: 'edit_user_details'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
