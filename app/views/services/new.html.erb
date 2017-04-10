@@ -53,9 +53,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.date_field :next_service_date,
-                class: 'form-control',
-                required: true %>
+            <%= f.date_field :next_service_date, :value => Time.now.strftime('%Y-%m-%d'), class: 'form-control', required: true %>
           </div>
         </div>
       </div>
