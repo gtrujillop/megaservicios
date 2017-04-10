@@ -4,13 +4,20 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  
+  scope :ultimos, ->{ order("created_at DESC") }
+  
   def applicances_count
     appliances.count
   end
 
   def full_name
     first_name + ' ' + last_name
+  end
+
+  def self.search(search)
+    where("first_name || ' ' || last_name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR phone LIKE ? OR address LIKE ? OR email LIKE ?",
+      "%#{search}", "%#{search}", "%#{search}", "%#{search}", "%#{search}", "%#{search}")
   end
 
   # TODO Add roles and user_roles.

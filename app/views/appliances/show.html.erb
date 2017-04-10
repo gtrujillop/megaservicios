@@ -54,15 +54,5 @@
         </table>
       </div>
     </div>
-    <% if current_user.is_admin?  %>
-      <div class="row">
-        <div class="col-md-4 button-opt"> 
-          <%= link_to "Editar", '#', class: 'btn btn-warning'%>
-          <%= link_to "Eliminar", '#', :method => :delete, :data => { :confirm => '¿Estas seguro?' }, class: 'btn btn-danger'%>
-        </div>
-        <div class="col-md-10">
-        </div>
-      </div>
-    <% end %>
   </div>
 </div>

@@ -1,0 +1,25 @@
+.jumbotron 
+  %h2.text-center Lista de Solicitudes
+  .table-responsive
+    %table.table.table-hover
+      %thead
+        %tr
+          %th #
+          %th Nombre
+          %th Teléfono
+          %th Dirección
+          %th Correo
+          %th  
+          %th
+
+      %tbody
+        - @contacts.each do |contact|
+          %tr
+            %td= contact.id
+            %td= truncate(contact.full_name)
+            %td= truncate(contact.phone)
+            %td= truncate(contact.address)
+            %td= truncate(contact.email)
+            %td= link_to 'Leer', contact, :class => "btn btn-info"
+            %td= link_to 'Eliminar', contact, :method => :delete, :data => { :confirm => '¿Estas seguro?' }, :class => "btn btn-danger"
+  = will_paginate @contacts, :previous_label => "anterior", :next_label => "siguiente", :class => "text-center"

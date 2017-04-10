@@ -20,9 +20,6 @@ class ServicesController < ApplicationController
   def index
     @services = Service.by_user(params[:user_id])
     @user = User.find(params[:user_id])
-    if @services.empty?
-      flash[:alert] = 'No hay servicios registrados para este usuario.'
-    end
   end
 
   def show

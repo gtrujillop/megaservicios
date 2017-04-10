@@ -16,23 +16,38 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
-    if @users.empty?
-      flash[:alert] = 'No hay clientes registrados.'
+    @users = User.ultimos
+    if params[:search]
+       @users = User.search(params[:search])
+    else
+      @users = User.ultimos
     end
-  end
+  end  
 
+  def update
+  end
+  
   def create
+    unless params[:user][:id].blank? 
+      @user = User.find(params[:user][:id])
+      unless @user.blank?
+        User.destroy(params[:user][:id])
+      end
+    end
     @user = User.new(user_params)
-    if @user.save
-      flash[:success] = "Nuevo cliente registrado."
+    if @user.save(validate: false)
+      flash[:success] = "Registrado correctamente."
       redirect_to user_list_path
     else
       flash[:error] = @user.errors.full_messages.join(',')
       render 'new'
     end
   end
-
+  
+  def edit_user_details
+    @user = User.find(params[:id])
+  end
+    
   def user_params
     params.require(:user).permit(:id,
                                  :first_name,

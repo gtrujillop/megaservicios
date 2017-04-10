@@ -7,8 +7,8 @@ class Appliance < ActiveRecord::Base
   validates :model, presence: true, length: { maximum: 75 }
 
   scope :by_user, -> (user_id) { where("user_id = ?", "#{user_id}") }
-  scope :ultimos, ->{ order("created_at DESC") }
-
+  scope :allf, -> { includes(:services).order("services.next_service_date DESC") } 
+  
   def brand_name
     brand.name
   end

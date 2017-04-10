@@ -1,14 +1,12 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1 jumbotron">
 
-    <div class="row">
-      <div class="col-md-2">
-      </div>
-      <div class="col-md-8">
-        <h4 class="text-center"> Electrodomésticos Registrados </h4>
-      </div>
-      <div class="col-md-2">
-      </div>
+    <div class="row text-center">
+      <% if params[:user_id]  %>
+        <h4 class="text-center"> Electrodomésticos Registrados para <%= @user.full_name %></h4>
+      <% else %>
+        <h4 class="text-center"> Servicios Registrados</h4>
+      <% end %>
     </div>
     <div class="row">
       <div class="table-responsive">
@@ -33,9 +31,14 @@
               <th>
                 Próxima Revisión
               </th>
-              <th>
-                Detalles
-              </th>
+              <% if params[:user_id]  %>
+                <th>
+                  Editar
+                </th>              
+                <th>
+                  Eliminar
+                </th>
+              <% end %>
             </tr>
           </thead>
           <tbody>
@@ -47,27 +50,27 @@
                 <td><%= appliance.user_name %></td>
                 <td><%= appliance.last_revision_date.try(:strftime, "%d/%m/%Y") %></td>
                 <td><%= appliance.next_revision_date.try(:strftime, "%d/%m/%Y") %></td>
-                <td><%= link_to "Detalles",
-                        appliance_path(id: appliance.id),
-                        method: :get,
-                        class: 'btn btn-primary' %></td>
+                <% if params[:user_id]  %>
+                  <td><%= link_to 'Editar', edit_appliance_path(id: appliance.id, user_id: params[:user_id]), :class => "btn btn-info" %></td>
+                  <td><%= link_to 'Eliminar', appliance, :method => :delete, :data => { :confirm => '¿Estas seguro?' }, :class => "btn btn-danger" %></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>
         </table>
       </div>
     </div>
-    <% if current_user.is_admin?  %>
-      <div class="row">
-        <div class="col-md-2">
-          <%= link_to "Registrar Nuevo",
+    <% if params[:user_id]  %>
+      <div class="row text-right">
+          <%= link_to "Servicios",
+              user_services_path(user_id: @user_id),
+              method: :get,
+              class: 'btn btn-primary' %>
+          <%= link_to "Registrar Electrodoméstico",
               new_appliance_path(user_id: @user_id),
               method: :get,
-              class: 'btn btn-success' %>
-        </div>
-        <div class="col-md-10">
-        </div>
+              class: 'btn btn-success ' %>
       </div>
-    <% end %>
+    <% end %>    
   </div>
 </div>
