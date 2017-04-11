@@ -16,11 +16,11 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.ultimos
+    @users = User.latest
     if params[:search]
        @users = User.search(params[:search])
     else
-      @users = User.ultimos
+      @users = User.latest
     end
   end  
 

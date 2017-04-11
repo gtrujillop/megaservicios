@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  scope :ultimos, ->{ order("created_at DESC") }
+  scope :latest, ->{ order("created_at DESC") }
   
   def applicances_count
     appliances.count
