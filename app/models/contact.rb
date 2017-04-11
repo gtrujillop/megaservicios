@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
   include AASM
-  scope :ultimos, ->{ order("created_at DESC") }
+  scope :latest, ->{ order("created_at DESC") }
   
   aasm column: "state" do
     state :in_draft, initial: true
