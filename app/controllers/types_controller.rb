@@ -28,7 +28,7 @@ class TypesController < ApplicationController
 
     respond_to do |format|
       if @type.save
-        format.html { redirect_to @type, notice: 'Type was successfully created.' }
+        format.html { redirect_to types_path, notice: 'Type was successfully created.' }
         format.json { render :show, status: :created, location: @type }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TypesController < ApplicationController
   def update
     respond_to do |format|
       if @type.update(type_params)
-        format.html { redirect_to @type, notice: 'Type was successfully updated.' }
+        format.html { redirect_to types_path, notice: 'Type was successfully updated.' }
         format.json { render :show, status: :ok, location: @type }
       else
         format.html { render :edit }

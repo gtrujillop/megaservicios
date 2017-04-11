@@ -49,7 +49,7 @@
         </table>
       </div>
     </div>
-    <% if current_user.is_admin?  %>
+    <% if @user.appliances.ids.present?  %>
       <div class="row text-right">
         <%= link_to "Registrar Servicio",
             new_user_service_path(user_id: @user.id),

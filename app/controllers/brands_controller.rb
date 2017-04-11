@@ -42,7 +42,7 @@ class BrandsController < ApplicationController
   def update
     respond_to do |format|
       if @brand.update(brand_params)
-        format.html { redirect_to @brand, notice: 'Marca editada con exito.' }
+        format.html { redirect_to brands_path, notice: 'Marca editada con exito.' }
         format.json { render :show, status: :ok, location: @brand }
       else
         format.html { render :edit }
