@@ -29,7 +29,7 @@ class AppliancesController < ApplicationController
   end
 
   def index
-    @appliances = Appliance.allf unless params[:user_id]
+    @appliances = Appliance.all unless params[:user_id]
     @appliances = Appliance.where(user_id: params[:user_id]) if params[:user_id]
     @user = User.find(params[:user_id]) if params[:user_id]
     @user_id = @user.id if @user
