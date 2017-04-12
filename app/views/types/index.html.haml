@@ -1,0 +1,23 @@
+.col-md-2
+.col-md-8
+  .jumbotron 
+    %h2.text-center Lista de Tipos de Electrodomésticos
+    %br
+    .table-responsive
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Nombre
+            %th Descripción
+            %th 
+            %th 
+        - @types.each do |type|
+          %tr
+            %td= type.name
+            %td= type.description
+            %td= link_to 'Editar', edit_type_path(type), class: 'btn btn-info'
+            %td= link_to 'Eliminar', type, :method => :delete, :data => { :confirm => 'Estas seguro?' }, :class => "btn btn-danger"
+    .row.text-right
+      =link_to "Registrar Tipo", new_type_path, class: 'btn btn-success'
+.col-md-2
+%br

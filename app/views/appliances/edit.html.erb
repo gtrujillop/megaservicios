@@ -1,0 +1,84 @@
+<div class="col-md-2">
+</div>
+<div class="col-md-8">
+  <div class="jumbotron">
+    <%= form_for @appliance do |f| %>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 jumbotron">
+          <h3 class="text-center">Editar Electrodoméstico</h3>
+          <br/>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.label :modelo %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.text_field :model, class: 'form-control', required: true %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :usuario, for: 'user_id' %>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.select(:user_id, nil, {},  class: 'form-control') do %>
+                    <%= content_tag(:option, @user.first_name, value: @user.id) %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :marca, for: 'brand_id' %>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.select(:brand_id, nil, {}, class: 'form-control') do %>
+                  <% @brands.each do |brand| -%>
+                    <%= content_tag(:option, brand.name, value: brand.id) %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :tipo, for: 'type_id' %>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.select(:type_id, nil, {}, {class: "form-control"}) do %>
+                  <% @types.each do |type| -%>
+                    <%= content_tag(:option, type.name, value: type.id) %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-6">
+              <br/>
+              <div class="form-group text-center">
+                <%= f.submit "Guardar", class: 'btn btn-success'%>
+                <%= link_to "Cancel", :back, class: 'btn btn-danger' %>
+              </div>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

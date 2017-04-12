@@ -1,0 +1,23 @@
+.col-md-2
+.col-md-8
+  .jumbotron 
+    %h2.text-center Lista de Marcas
+    %br
+    .table-responsive
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Nombre
+            %th Descripción
+            %th 
+            %th 
+        - @brands.each do |brand|
+          %tr
+            %td= brand.name
+            %td= brand.description
+            %td= link_to 'Editar', edit_brand_path(brand), class: 'btn btn-info'
+            %td= link_to 'Eliminar', brand, :method => :delete, :data => { :confirm => 'Estas seguro?' }, :class => "btn btn-danger"
+    .row.text-right
+      =link_to "Registrar Marca", new_brand_path, class: 'btn btn-success'
+.col-md-2
+%br

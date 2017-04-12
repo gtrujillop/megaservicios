@@ -16,6 +16,10 @@
     %p
       %b Problema:
       = @contact.problem
-    = link_to 'Volver atrás', contacts_path, :class => "text-center", :class => "btn btn-danger"
+    .text-right
+      - if @contact.may_revise?
+        = link_to 'Listo', "/contacts/#{@contact.id}/revise", method: :put, class: 'btn btn-success ', :data => { :confirm => '¿Estas seguro?' }
+
+      = link_to 'Volver atrás', :back, :class => "text-center", :class => "btn btn-danger"
 
 

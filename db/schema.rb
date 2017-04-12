@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202141926) do
+ActiveRecord::Schema.define(version: 20170410224327) do
 
   create_table "appliances", force: :cascade do |t|
     t.string   "model"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20161202141926) do
     t.text     "problem"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "state"
   end
 
   create_table "crono_jobs", force: :cascade do |t|
@@ -82,9 +83,10 @@ ActiveRecord::Schema.define(version: 20161202141926) do
     t.integer  "appliance_id"
     t.decimal  "cost"
     t.text     "comments"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.date     "next_service_date"
+    t.string   "state",             default: "in_draft"
   end
 
   add_index "services", ["appliance_id"], name: "index_services_on_appliance_id"
@@ -97,13 +99,13 @@ ActiveRecord::Schema.define(version: 20161202141926) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
+    t.string   "email"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "first_name",                          null: false
     t.string   "last_name",                           null: false
     t.string   "phone",                               null: false
     t.string   "address",                             null: false
-    t.date     "birth_date",                          null: false
+    t.date     "birth_date"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -116,8 +118,6 @@ ActiveRecord::Schema.define(version: 20161202141926) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["phone"], name: "index_users_on_phone", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

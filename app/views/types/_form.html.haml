@@ -1,0 +1,28 @@
+%h2.text-center 
+  =name 
+  Tipo
+%br
+= form_for @type do |f|
+  - if @type.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@type.errors.count, "error")} prohibited this type from being saved:"
+      %ul
+        - @type.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    .col-sm-6
+      %b Nombre:
+    .col-sm-6
+      = f.text_field :name, class: 'form-control', required: true 
+  .field
+    .col-sm-6
+      %b Descripción:
+    .col-sm-12
+    = f.text_area :description, class: 'form-control', required: true
+  %br
+  .col-sm-12
+    .actions.text-right
+      = f.submit 'Guardar', class: 'btn btn-success'
+      = link_to "Cancelar", types_path, class: 'btn btn-danger'
+  %br

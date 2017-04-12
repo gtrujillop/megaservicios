@@ -1,23 +1,34 @@
 Rails.application.routes.draw do
 
 
+  get 'dailys/index'
+
+  get 'daily/index'
+
+  resources :types
+  resources :brands
+  get 'search/create'
+
   resources :articles
   resources :contacts, except: [:new]
+  put "/contacts/:id/revise", to: "contacts#revise"
   devise_for :users
   root 'landing#home'
   get 'users/show'
   
-  resources :appliances, only: [:index, :new, :create, :show]
+  resources :appliances
+  patch 'appliances/:id', to: 'appliances#update'
 
   get 'users/:user_id/appliances', to: 'appliances#index', as: 'user_appliances'
   get 'users/:user_id/appliances/:id', to: 'appliances#show', as: 'show_user_appliance'
-
+  
   get 'users/:user_id/services', to: 'services#index', as: 'user_services'
   get 'users/:user_id/services/:id', to: 'services#show', as: 'show_user_services'
   get 'users/:user_id/service', to: 'services#new', as: 'new_user_service'
   post 'users/:user_id/service', to: 'services#create', as: 'create_user_service'
-
-
+  put "/services/:id/complete", to: "services#complete"
+  put "/services/:id/uncomplete", to: "services#uncomplete"
+  
   scope :users, controller: 'users' do
     post 'create', as: 'create_user'
     get 'new', as: 'new_user'
@@ -26,6 +37,7 @@ Rails.application.routes.draw do
     get 'index', as: 'user_list'
     delete 'destroy', as: 'destroy_user'
     get 'user_details', as: 'user_details'
+    get 'edit_user_details', as: 'edit_user_details'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

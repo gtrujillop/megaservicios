@@ -1,15 +1,15 @@
 <%= form_for @service, method: :post, url: new_user_service_path do |f| %>
   <div class="row">
     <div class="col-md-8 jumbotron col-md-offset-2">
-
+      <h2 class="text-center">Nuevo Servicio para <%=@user.full_name%></h2>
       <div class="row">
-        <h2>Nuevo Servicio para <%=@user.full_name%></h2>
+        <br/>
         <div class="col-md-6">
           <%= f.label :dispositivo, for: 'appliance_id' %>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.select(:appliance_id, class: 'form-control') do %>
+            <%= f.select(:appliance_id,nil,{}, class: 'form-control') do %>
               <% @appliances.each do |appliance| -%>
                 <%= content_tag(:option, appliance.model, value: appliance.id) %>
               <% end %>
@@ -53,29 +53,19 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.date_field :next_service_date,
-                class: 'form-control',
-                required: true %>
+            <%= f.date_field :next_service_date, :value => Time.now.strftime('%Y-%m-%d'), class: 'form-control', required: true %>
           </div>
         </div>
       </div>
 
       <%= f.hidden_field :registered_at, value: Date.today %>
-
-      <div class="row">
-        <div class="col-md-3">
-
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.submit "Guardar", class: 'btn btn-success'%>
-            <%= link_to "Cancelar",
-                user_services_path(user_id: @user.id),
-                class: 'btn btn-danger' %>
-          </div>
-        </div>
-        <div class="col-md-3">
-
+      <br/>
+      <div class="text-center">
+        <div class="form-group">
+          <%= f.submit "Guardar", class: 'btn btn-success'%>
+          <%= link_to "Cancelar",
+              user_services_path(user_id: @user.id),
+              class: 'btn btn-danger' %>
         </div>
       </div>
     </div>

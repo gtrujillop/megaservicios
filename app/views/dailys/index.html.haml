@@ -1,0 +1,99 @@
+%h3 Servicios para el día: #{Time.now.try(:strftime, "%d/%m/%Y")}
+%br
+%table.table.table-hover
+  %tr
+    %th
+      ID 
+    %th
+      Estado      
+    %th
+      Tipo
+    %th
+      Marca  
+    %th
+      Modelo
+    %th
+      Comentario   
+    %th
+      Nombre
+    %th
+      Telefono  
+    %th
+      Dirección
+    %th
+      costo      
+  - @services.each do |service|
+    -if service.next_service_date.try(:strftime, "%d/%m/%Y") == Time.now.try(:strftime, "%d/%m/%Y")
+      %tr 
+        %td
+          = link_to service.appliance_id, appliance_path(id: service.appliance.id), method: :get
+        %td
+          -if service.may_complete?
+            = link_to "Completar", "/services/#{service.id}/complete", method: :put
+          -else
+            = link_to "Descompletar", "/services/#{service.id}/uncomplete", method: :put
+        %td 
+          = service.appliance.type.name
+        %td 
+          = service.appliance.brand.name
+        %td 
+          = service.appliance.model
+        %td
+          = service.comments   
+        %td
+          = service.appliance.user.full_name
+        %td
+          = service.appliance.user.phone
+        %td
+          = service.appliance.user.address
+        %td
+          = service.cost  
+%br
+%br
+%table.table.table-hover
+  %tr
+    %th
+      ID      
+    %th
+      Fecha
+    %th
+      Tipo
+    %th
+      Marca  
+    %th
+      Modelo
+    %th
+      Comentario   
+    %th
+      Nombre
+    %th
+      Telefono  
+    %th
+      Dirección
+    %th
+      costo      
+  - @services.each do |service|
+    -unless service.state == "completed" or service.next_service_date.try(:strftime, "%d/%m/%Y") <= Time.now.try(:strftime, "%d/%m/%Y")
+      %tr  
+        %td
+          = link_to service.appliance_id, appliance_path(id: service.appliance.id), method: :get
+        %td
+          = service.next_service_date.try(:strftime, "%d/%m/%Y")
+        %td 
+          = service.appliance.type.name
+        %td 
+          = service.appliance.brand.name
+        %td 
+          = service.appliance.model
+        %td
+          = service.comments   
+        %td
+          = service.appliance.user.full_name
+        %td
+          = service.appliance.user.phone
+        %td
+          = service.appliance.user.address
+        %td
+          = service.cost          
+  
+          
