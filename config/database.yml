@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql
   database: db/production.sqlite3
+  pool: 5
+  timeout: 5000
