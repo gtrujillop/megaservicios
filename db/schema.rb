@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20170410224327) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "appliances", force: :cascade do |t|
     t.string   "model"
     t.integer  "user_id"
@@ -22,9 +25,9 @@ ActiveRecord::Schema.define(version: 20170410224327) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "appliances", ["brand_id"], name: "index_appliances_on_brand_id"
-  add_index "appliances", ["type_id"], name: "index_appliances_on_type_id"
-  add_index "appliances", ["user_id"], name: "index_appliances_on_user_id"
+  add_index "appliances", ["brand_id"], name: "index_appliances_on_brand_id", using: :btree
+  add_index "appliances", ["type_id"], name: "index_appliances_on_type_id", using: :btree
+  add_index "appliances", ["user_id"], name: "index_appliances_on_user_id", using: :btree
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20170410224327) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "crono_jobs", ["job_id"], name: "index_crono_jobs_on_job_id", unique: true
+  add_index "crono_jobs", ["job_id"], name: "index_crono_jobs_on_job_id", unique: true, using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -76,7 +79,7 @@ ActiveRecord::Schema.define(version: 20170410224327) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.date     "registered_at"
@@ -89,7 +92,7 @@ ActiveRecord::Schema.define(version: 20170410224327) do
     t.string   "state",             default: "in_draft"
   end
 
-  add_index "services", ["appliance_id"], name: "index_services_on_appliance_id"
+  add_index "services", ["appliance_id"], name: "index_services_on_appliance_id", using: :btree
 
   create_table "types", force: :cascade do |t|
     t.string   "name"
@@ -118,6 +121,10 @@ ActiveRecord::Schema.define(version: 20170410224327) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "appliances", "brands"
+  add_foreign_key "appliances", "types"
+  add_foreign_key "appliances", "users"
+  add_foreign_key "services", "appliances"
 end
