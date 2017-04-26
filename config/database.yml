@@ -18,3 +18,9 @@ test:
   pool: 5
   username: cejaramillof
   password: 123456789
+  
+production:
+  adapter: postgresql
+  host: localhost
+  username: user
+  database: app-dev
