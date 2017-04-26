@@ -20,6 +20,7 @@
             -if article.id != 1 && article.id != 2
               %td= link_to 'Eliminar', article, :method => :delete, :data => { :confirm => '¿Estas seguro?' }, :class => "btn btn-danger"
             -else
-              %td 
-  = link_to 'Nuevo Articulo', new_article_path, :class => "btn btn-success"
+              %td
+  .text-right
+    = link_to 'Nuevo Articulo', new_article_path, :class => "btn btn-success"
 = will_paginate @articles, :previous_label => "anterior", :next_label => "siguiente", :class => "text-center"

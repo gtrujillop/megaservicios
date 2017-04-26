@@ -1,4 +1,5 @@
 class Service < ActiveRecord::Base
+  include AASM
   belongs_to :appliance
 
   scope :ultimos, ->{ order("created_at DESC") }
@@ -7,6 +8,20 @@ class Service < ActiveRecord::Base
   scope :planned_for_date, -> (date) { where(next_service_date: date).
                                        includes(appliance: :user) }
 
+  aasm column: "state" do
+    state :in_draft, initial: true
+    state :completed
+    
+    event :complete do
+      transitions from: :in_draft, to: :completed
+    end
+    
+    event :uncomplete do
+      transitions from: :completed, to: :in_draft
+    end
+    
+  end
+  
   def appliance_model
     appliance.model
   end

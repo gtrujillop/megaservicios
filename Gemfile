@@ -33,6 +33,9 @@ gem 'toastr-rails'
 #Paginacion Articulos
 gem 'will_paginate'
 
+#Gema de maquina de estados
+gem 'aasm'
+
 gem 'devise'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'active_model_serializers', '~> 0.9.4'
@@ -43,6 +46,7 @@ gem 'dateslices'
 # for cron jobs in rails
 gem 'crono'
 gem 'delayed_job_active_record'
+gem 'pg', '0.17.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -55,12 +59,11 @@ gem 'delayed_job_active_record'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  gem 'shoulda'
-  gem 'rspec-rails', '~> 3.0'
-  gem 'factory_girl_rails'
+#  gem 'byebug'
+#  gem 'shoulda'
+#  gem 'rspec-rails', '~> 3.0'
+#  gem 'factory_girl_rails'
   gem 'database_cleaner'
 end
 
@@ -73,8 +76,7 @@ group :development do
 end
 
 group :production do
-#  gem 'pg', '0.17.1'
   gem 'rails_12factor', '0.0.2'
-  # gem 'groupdate'
+  gem 'groupdate'
   gem 'puma'
 end

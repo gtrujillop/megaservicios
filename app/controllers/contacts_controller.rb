@@ -1,13 +1,20 @@
 class ContactsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:new, :create]
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :revise]
 
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.paginate(page: params[:page],per_page:15).ultimos
+    if params[:view]      
+      @contacts = Contact.paginate(page: params[:page],per_page:15).revised.latest
+      render 'dashb'
+    else
+      @contacts = Contact.in_draft.latest
+      $total_revised = @contacts.size
+      render 'index'      
+    end
   end
-
+  
   # GET /contacts/1
   # GET /contacts/1.json
   def show
@@ -16,6 +23,11 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+  end
+  
+  def revise
+    @contact.revise!
+    redirect_to contacts_url
   end
 
   # POST /contacts

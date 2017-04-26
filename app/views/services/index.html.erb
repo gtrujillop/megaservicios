@@ -21,6 +21,9 @@
               <th>
                 Próxima Revisión
               </th>
+              <th>
+                ¿Realizada?
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -33,21 +36,24 @@
                 <td><%= service.cost %></td>
                 <td><%= service.comments %></td>
                 <td><%= service.next_service_date.try(:strftime, "%d/%m/%Y") %></td>
+                <td>
+                  <% if service.may_complete? %>
+                    <%= link_to "Completar", "/services/#{service.id}/complete", method: :put %>
+                  <% else %>
+                    <%= link_to "Descompletar", "/services/#{service.id}/uncomplete", method: :put %>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>
         </table>
       </div>
     </div>
-    <% if current_user.is_admin?  %>
-      <div class="row">
-        <div class="col-md-2 button-opt">
-          <%= link_to "Registrar Nuevo",
-              new_user_service_path(user_id: @user.id),
-              class: 'btn btn-success'%>
-        </div>
-        <div class="col-md-10">
-        </div>
+    <% if @user.appliances.ids.present?  %>
+      <div class="row text-right">
+        <%= link_to "Registrar Servicio",
+            new_user_service_path(user_id: @user.id),
+            class: 'btn btn-success'%>
       </div>
     <% end %>
   </div>

@@ -1,0 +1,78 @@
+<h2 class="text-center"><%= name %> Cliente</h2>
+<br/>
+<%= form_for @user, method: :post, url: create_user_path  do |f| %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <b>Nombre(s):</b>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.hidden_field :id, :value => @user.id %>
+            <%= f.text_field :first_name, class: 'form-control', required: true %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <b>Apellido(s):</b>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.text_field :last_name, class: 'form-control', required: true %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <b>Correo:</b> <small> (Opcional)</small>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <b>Teléfono:</b>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.number_field :phone, class: 'form-control', required: true %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <b>Dirección:</b>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.text_field :address, class: 'form-control', required: true %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group text-center">
+            <br/>
+            <%= f.submit "Guardar", class: 'btn btn-success'%>
+            <%= link_to "Cancel", user_list_path, class: 'btn btn-danger' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -17,12 +17,21 @@ class ServicesController < ApplicationController
     end
   end
 
+  def complete
+    @service = Service.find(params[:id])
+    @service.complete!
+    redirect_to :back
+  end
+
+  def uncomplete
+    @service = Service.find(params[:id])
+    @service.uncomplete!
+    redirect_to :back
+  end  
+  
   def index
     @services = Service.by_user(params[:user_id])
     @user = User.find(params[:user_id])
-    if @services.empty?
-      flash[:alert] = 'No hay servicios registrados para este usuario.'
-    end
   end
 
   def show
@@ -35,6 +44,7 @@ class ServicesController < ApplicationController
 
   def service_params
     params.require(:service).permit(:id,
+                                    :state,
                                     :registered_at,
                                     :appliance_id,
                                     :cost,

@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202141926) do
+ActiveRecord::Schema.define(version: 20170410224327) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "appliances", force: :cascade do |t|
     t.string   "model"
@@ -22,9 +25,9 @@ ActiveRecord::Schema.define(version: 20161202141926) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "appliances", ["brand_id"], name: "index_appliances_on_brand_id"
-  add_index "appliances", ["type_id"], name: "index_appliances_on_type_id"
-  add_index "appliances", ["user_id"], name: "index_appliances_on_user_id"
+  add_index "appliances", ["brand_id"], name: "index_appliances_on_brand_id", using: :btree
+  add_index "appliances", ["type_id"], name: "index_appliances_on_type_id", using: :btree
+  add_index "appliances", ["user_id"], name: "index_appliances_on_user_id", using: :btree
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -48,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161202141926) do
     t.text     "problem"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "state"
   end
 
   create_table "crono_jobs", force: :cascade do |t|
@@ -59,7 +63,7 @@ ActiveRecord::Schema.define(version: 20161202141926) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "crono_jobs", ["job_id"], name: "index_crono_jobs_on_job_id", unique: true
+  add_index "crono_jobs", ["job_id"], name: "index_crono_jobs_on_job_id", unique: true, using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -75,19 +79,20 @@ ActiveRecord::Schema.define(version: 20161202141926) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.date     "registered_at"
     t.integer  "appliance_id"
     t.decimal  "cost"
     t.text     "comments"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.date     "next_service_date"
+    t.string   "state",             default: "in_draft"
   end
 
-  add_index "services", ["appliance_id"], name: "index_services_on_appliance_id"
+  add_index "services", ["appliance_id"], name: "index_services_on_appliance_id", using: :btree
 
   create_table "types", force: :cascade do |t|
     t.string   "name"
@@ -97,13 +102,13 @@ ActiveRecord::Schema.define(version: 20161202141926) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
+    t.string   "email"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "first_name",                          null: false
     t.string   "last_name",                           null: false
     t.string   "phone",                               null: false
     t.string   "address",                             null: false
-    t.date     "birth_date",                          null: false
+    t.date     "birth_date"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -116,8 +121,10 @@ ActiveRecord::Schema.define(version: 20161202141926) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["phone"], name: "index_users_on_phone", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "appliances", "brands"
+  add_foreign_key "appliances", "types"
+  add_foreign_key "appliances", "users"
+  add_foreign_key "services", "appliances"
 end
