@@ -11,7 +11,7 @@
   database: ms_dev
   pool: 5
   username: cejaramillof
-  password: 123456789
+  password: 
 
 test:
   adapter: postgresql
