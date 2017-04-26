@@ -5,13 +5,11 @@
 #   gem 'sqlite3'
 #
 
- development:
+development:
   adapter: postgresql
-  encoding: unicode
-  database: ms_dev
-  pool: 5
-  username: cejaramillof
-  password: 
+  host: localhost
+  username: user
+  database: app-dev
 
 test:
   adapter: postgresql
