@@ -18,11 +18,11 @@ class ChartPresenter
   end
 
   def self.services_by_day
-    @services_by_day ||= services.group_by_day(:registered_at, 'count')
+    @services_by_day ||= services.group_by_day(:registered_at).count
   end
 
   def self.services_invoice_by_month
-    @services_invoice_by_month ||= services.group_by_month(:created_at, 'sum', 'cost')
+    @services_invoice_by_month ||= services.group_by_month(:created_at).count
   end
 
   def self.appliance_type_names
@@ -30,6 +30,6 @@ class ChartPresenter
   end
 
   def self.new_users
-    @new_users ||= User.group_by_month(:created_at, 'count')
+    @new_users ||= User.group_by_month(:created_at).count
   end
 end

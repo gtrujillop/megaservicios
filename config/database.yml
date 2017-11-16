@@ -8,13 +8,12 @@
 development:
   adapter: postgresql
   host: localhost
-  username: user
-  database: app-dev
+  username: wtm_local
+  database: megaservicios_development
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: ms_test
+  database: megaservicios_test
   pool: 5
-  username: cejaramillof
-  password: 123456789
+  username: wtm_local

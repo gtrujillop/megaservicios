@@ -42,7 +42,7 @@ gem 'active_model_serializers', '~> 0.9.4'
 gem 'validates_timeliness', '~> 4.0'
 # gem 'geocoder'
 gem 'chartkick'
-gem 'dateslices'
+gem 'groupdate'
 # for cron jobs in rails
 gem 'crono'
 gem 'delayed_job_active_record'
@@ -60,7 +60,7 @@ gem 'pg', '0.17.1'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-#  gem 'byebug'
+  gem 'byebug'
 #  gem 'shoulda'
 #  gem 'rspec-rails', '~> 3.0'
 #  gem 'factory_girl_rails'

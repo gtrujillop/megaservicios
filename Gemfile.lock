@@ -50,6 +50,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
+    byebug (9.0.6)
     chartkick (2.2.3)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -63,8 +64,6 @@ GEM
       activerecord (>= 4.0)
       activesupport (>= 4.0)
     database_cleaner (1.5.3)
-    dateslices (0.0.4)
-      rails (> 4)
     debug_inspector (0.0.2)
     delayed_job (4.1.2)
       activesupport (>= 3.0, < 5.1)
@@ -210,11 +209,11 @@ DEPENDENCIES
   aasm
   active_model_serializers (~> 0.9.4)
   bootstrap-sass
+  byebug
   chartkick
   coffee-rails (~> 4.1.0)
   crono
   database_cleaner
-  dateslices
   delayed_job_active_record
   devise
   groupdate
