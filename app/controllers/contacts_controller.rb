@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
     if params[:view]      
-      @contacts = Contact.paginate(page: params[:page],per_page:15).revised.latest
+      @contacts = Contact.paginate(page: params[:page] ,per_page:15).revised.latest
       render 'dashb'
     else
       @contacts = Contact.in_draft.latest

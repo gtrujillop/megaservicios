@@ -46,6 +46,7 @@ gem 'groupdate'
 # for cron jobs in rails
 gem 'crono'
 gem 'delayed_job_active_record'
+gem 'sendgrid-ruby'
 gem 'pg', '0.17.1'
 
 # Use ActiveModel has_secure_password
