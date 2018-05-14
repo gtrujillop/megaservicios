@@ -12,8 +12,8 @@
     = custom_bootstrap_flash
     = render partial: "partials/landing/navbar"
     %div#home
-      #content.col-md-6.col-md-offset-1
+      #content.col-md-6
         = yield
-      #contactform.col-md-3.col-md-offset-1
+      #contactform.col-md-6
         = render partial: "partials/landing/contact"
     = render partial: "partials/landing/footer"
