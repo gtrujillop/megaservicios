@@ -1,14 +1,16 @@
 class User < ActiveRecord::Base
   has_many :appliances
+  has_one :user_role
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
  
   validates :email, uniqueness: true
-
   
   scope :latest, ->{ order("created_at DESC") }
+
+  ADMIN_ROLE = 'Administrator'.freeze
   
   def applicances_count
     appliances.count
@@ -23,9 +25,8 @@ class User < ActiveRecord::Base
       "%#{search}", "%#{search}", "%#{search}", "%#{search}", "%#{search}", "%#{search}")
   end
 
-  # TODO Add roles and user_roles.
-  # Only user for now will be David Lopez
   def is_admin?
-    true
+    return false unless user_role
+    user_role&.name == ADMIN_ROLE
   end
 end

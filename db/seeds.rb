@@ -8,3 +8,5 @@
 Type.create([{ name: 'Nevera' }, { name: 'Lavadora' }, { name: 'Microondas' }, { name: 'Plancha' }, { name: 'Audio y TV' }, { name: 'Calentador' }, { name: 'Licuadora' }, { name: 'Otro' }])
 Brand.create([{ name: 'Haceb' }, { name: 'General Electric' }, { name: 'Samsung' }, { name: 'Centrales' }, { name: 'LG' }, { name: 'Whirpool' }, { name: 'Mabe' }, { name: 'Otra' }])
 User.create(first_name: 'David A.', last_name: 'López', email: 'davidlopez67@hotmail.com', phone: '0573043549496', birth_date: '1980-01-01', password: '12345678', password_confirmation: '12345678', address: 'Rodeo Alto')
+u = User.where(email: 'davidlopez67@hotmail.com').first
+UserRole.create!(name: 'Administrator', user: u, description: 'Administrator User')
