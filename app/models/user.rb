@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+ 
+  validates :email, uniqueness: true
+
   
   scope :latest, ->{ order("created_at DESC") }
   
@@ -21,6 +24,7 @@ class User < ActiveRecord::Base
   end
 
   # TODO Add roles and user_roles.
+  # Only user for now will be David Lopez
   def is_admin?
     true
   end

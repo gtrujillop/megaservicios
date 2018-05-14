@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.paginate(page: params[:page],per_page:15).ultimos
+    @articles = Article.paginate(page: params[:page], per_page:15).latest
   end
 
   # GET /articles/1
