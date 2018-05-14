@@ -13,5 +13,5 @@
 #
 # Crono.perform(TestJob).every 2.days, at: '15:30'
 #
-Crono.perform(TodayServicesReminderJob).every 1.days, at: { hour: 07, min: 00 }
-Crono.perform(TomorrowServicesReminderJob).every 1.days, at: { hour: 20, min: 00 }
+Crono.perform(TodayServicesReminderJob).every 1.minutes#, at: { hour: 07, min: 00 }
+Crono.perform(TomorrowServicesReminderJob).every 1.minutes#, at: { hour: 20, min: 00 }
