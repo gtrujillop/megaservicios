@@ -19,7 +19,6 @@ body, html {
 #header {
   background-color: white;
   #logo {
-    position: absolute;
     margin: 7px 0 7px 0;
     min-width: 281px; 
     max-width: 281px; 
@@ -63,7 +62,7 @@ body, html {
       } 
       .num {
         margin: 0px 0 0 20px;
-        font-size: 25px;
+        font-size: 20px;
         color: black;
       } 
     }
@@ -75,7 +74,7 @@ body, html {
   background-attachment: fixed;
   background-position: top center;
   background-repeat: no-repeat;
-  height: 90%;
+  height: 100%;
   width: 100%;
   #content {
     padding: 3em 5em;
@@ -107,7 +106,6 @@ body, html {
   }
   #contactform {
     background-color: rgba(0, 201, 251, 0.95);
-    height: 100%;
     .text-bold:nth-child(1) {
       padding-top: 1em;
       font-size: 2.3em;
@@ -129,7 +127,7 @@ body, html {
         outline: none;
       }
     }
-    #new_contact > div.actions > input {
+    #new_contact > .row > div.actions > input {
       width: 100%;
       padding-top: 0.1em;
       padding-bottom: 0.3em;
@@ -146,7 +144,6 @@ body, html {
 
 #footer {
   background-color: white;
-  position: fixed;
   bottom: 0px;
   width: 100%;
 }

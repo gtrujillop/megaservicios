@@ -7,13 +7,14 @@
 
 development:
   adapter: postgresql
-  host: localhost
-  username: wtm_local
+  encoding: unicode
   database: megaservicios_development
+  pool: 5
+  username: postgres
 
 test:
   adapter: postgresql
   encoding: unicode
   database: megaservicios_test
   pool: 5
-  username: wtm_local
+  username: postgres
