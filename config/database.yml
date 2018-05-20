@@ -9,7 +9,9 @@ development:
   adapter: postgresql
   host: localhost
   username: postgres
+  encoding: unicode
   database: megaservicios_development
+  pool: 5
 
 test:
   adapter: postgresql
