@@ -32,12 +32,17 @@ class ServicesController < ApplicationController
   def index
     @services = Service.by_user(params[:user_id])
     @user = User.find(params[:user_id])
+    if @services.blank? && params[:user_id]
+      flash[:error] = 'No existen servicios registrados para este usuario.'
+    elsif @services.blank?
+      flash[:error] = 'No existen servicios registrados aún.'
+    end
   end
 
   def show
     @service = Service.find(params[:id])
     if @service.nil?
-      flash[:error] = 'Service does not exist.'
+      flash[:error] = 'No existe el servicio.'
       render 'index'
     end
   end
