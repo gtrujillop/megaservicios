@@ -230,7 +230,7 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
-  pg (~> 0.17.1)
+  pg (= 0.17.1)
   puma
   rack-cors
   rails (= 4.2.5)
