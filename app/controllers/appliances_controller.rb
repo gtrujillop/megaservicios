@@ -23,7 +23,7 @@ class AppliancesController < ApplicationController
   def show
     @appliance = Appliance.find(params[:id])
     if @appliance.nil?
-      flash[:error] = 'Appliance does not exist.'
+      flash[:error] = 'Electrodoméstico no existe.'
       render 'index'
     end
   end
@@ -33,6 +33,11 @@ class AppliancesController < ApplicationController
     @appliances = Appliance.where(user_id: params[:user_id]) if params[:user_id]
     @user = User.find(params[:user_id]) if params[:user_id]
     @user_id = @user.id if @user
+    if @appliances.blank? && params[:user_id]
+      flash[:error] = 'No existen electrodomésticos registrados para este usuario.'
+    elsif @appliances.blank?
+      flash[:error] = 'No existen electrodomésticos registrados aún.'
+    end
   end
 
   def edit
@@ -51,7 +56,7 @@ class AppliancesController < ApplicationController
 
     respond_to do |format|
       if @appliance.update(appliance_params)
-        format.html { redirect_to user_list_path, notice: 'Electrodoméstico editada con exito.' }
+        format.html { redirect_to user_list_path, notice: 'Electrodoméstico editado con exito.' }
         format.json { render :show, status: :ok, location: @appliance }
       else
         format.html { render :edit }
@@ -64,7 +69,7 @@ class AppliancesController < ApplicationController
     @appliance = Appliance.find(params[:id])
     @appliance.destroy
     respond_to do |format|
-      format.html { redirect_to :back, alert: 'Electrodoméstico destruido con exito.' }
+      format.html { redirect_to :back, alert: 'Electrodoméstico borrado con exito.' }
       format.json { head :no_content }
     end
   end  

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
  
   validates :email, uniqueness: true
+  validates :phone, uniqueness: true
   
   scope :latest, ->{ order("created_at DESC") }
 
@@ -21,8 +22,9 @@ class User < ActiveRecord::Base
   end
 
   def self.search(search)
-    where("first_name || ' ' || last_name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR phone LIKE ? OR address LIKE ? OR email LIKE ?",
-      "%#{search}", "%#{search}", "%#{search}", "%#{search}", "%#{search}", "%#{search}")
+    search = search.downcase
+    where("LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ? OR phone LIKE ? OR address LIKE ? OR LOWER(email) LIKE ?",
+      "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
   end
 
   def is_admin?
