@@ -48,6 +48,9 @@ gem 'crono'
 gem 'delayed_job_active_record'
 gem 'pg', '~> 0.17.1'
 
+# Calendar
+gem "simple_calendar", "~> 2.0"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
