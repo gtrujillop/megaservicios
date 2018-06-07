@@ -121,6 +121,8 @@ GEM
     puma (3.8.2)
     rack (1.6.5)
     rack-cors (0.4.1)
+    rack-protection (1.5.5)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.5)
@@ -156,6 +158,7 @@ GEM
     rdoc (4.3.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    ruby_http_client (3.3.0)
     ruby_parser (3.9.0)
       sexp_processor (~> 4.1)
     sass (3.4.23)
@@ -168,9 +171,19 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sendgrid-ruby (5.2.0)
+      ruby_http_client (~> 3.2)
+      sinatra (>= 1.4.7, < 3)
     sexp_processor (4.9.0)
+<<<<<<< HEAD
     simple_calendar (2.2.7)
       rails (>= 3.0)
+=======
+    sinatra (1.4.8)
+      rack (~> 1.5)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
+>>>>>>> master
     spring (2.0.1)
       activesupport (>= 4.2)
     sprockets (3.7.1)
@@ -229,7 +242,11 @@ DEPENDENCIES
   rails_12factor (= 0.0.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+<<<<<<< HEAD
   simple_calendar (~> 2.0)
+=======
+  sendgrid-ruby
+>>>>>>> master
   spring
   toastr-rails
   turbolinks

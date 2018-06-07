@@ -108,6 +108,16 @@ ActiveRecord::Schema.define(version: 20180514170419) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "user_roles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "encrypted_password",     default: "", null: false
@@ -134,4 +144,5 @@ ActiveRecord::Schema.define(version: 20180514170419) do
   add_foreign_key "appliances", "types"
   add_foreign_key "appliances", "users"
   add_foreign_key "services", "appliances"
+  add_foreign_key "user_roles", "users"
 end
