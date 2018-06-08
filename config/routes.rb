@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
 
-  get 'dailys/index', to: 'dailys#index'
-  get 'dalys/:date', to: 'dailys#day', as: 'show_day_services'
+  get 'dailies/index', to: 'dailies#index'
+  get 'dalies/:date', to: 'dailies#day', as: 'daily_services'
   get 'daily/index'
   
 

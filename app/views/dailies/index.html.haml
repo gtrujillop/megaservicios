@@ -3,7 +3,7 @@
     
 .calendar
   = month_calendar events: @services do |date, services|
-    = link_to show_day_services_path(date) do
+    = link_to daily_services_path(date) do
       %span.day_number
         = date.try(:strftime, "%d")
       %ul.services

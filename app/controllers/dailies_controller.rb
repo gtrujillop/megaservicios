@@ -1,4 +1,4 @@
-class DailysController < ApplicationController
+class DailiesController < ApplicationController
   before_action :set_services, only: [:index]
 
   def index; end
