@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
 
-  get 'dailys/index'
-
+  get 'dailys/index', to: 'dailys#index'
+  get 'dalys/:date', to: 'dailys#day', as: 'show_day_services'
   get 'daily/index'
+  
 
   resources :types
   resources :brands
@@ -60,7 +61,7 @@ Rails.application.routes.draw do
   #       get 'short'
   #       post 'toggle'
   #     end
-  #
+  #link_to
   #     collection do
   #       get 'sold'
   #     end

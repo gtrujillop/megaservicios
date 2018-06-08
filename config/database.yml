@@ -7,15 +7,13 @@
 
 development:
   adapter: postgresql
-  host: localhost
-  username: postgres
   encoding: unicode
   database: megaservicios_development
   pool: 5
+  username: postgres
 
 test:
   adapter: postgresql
-  host: localhost
   encoding: unicode
   database: megaservicios_test
   pool: 5

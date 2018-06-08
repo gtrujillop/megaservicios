@@ -44,4 +44,8 @@ class Service < ActiveRecord::Base
   def user_phone
     appliance.user_phone
   end
+
+  def start_time
+    self.next_service_date
+  end
 end
