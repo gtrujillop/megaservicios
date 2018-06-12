@@ -46,12 +46,8 @@ gem 'groupdate'
 # for cron jobs in rails
 gem 'crono'
 gem 'delayed_job_active_record'
-<<<<<<< 8883a235a3966ae1fa6d052921bc55fc8db732b1
 gem 'sendgrid-ruby'
 gem 'pg', '0.17.1'
-=======
-gem 'pg', '~> 0.17.1'
->>>>>>> Add fields to contacts model
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

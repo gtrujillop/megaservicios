@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     get 'user_details', as: 'user_details'
     get 'edit_user_details', as: 'edit_user_details'
   end
+
+  resources :technicians
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -4,6 +4,7 @@ class ServicesController < ApplicationController
     @service = Service.new
     @user = User.find(params[:user_id])
     @appliances = @user.appliances
+    @technicians = Technician.all
   end
 
   def create
@@ -54,6 +55,7 @@ class ServicesController < ApplicationController
                                     :appliance_id,
                                     :cost,
                                     :comments,
-                                    :next_service_date)
+                                    :next_service_date,
+                                    :technician_id)
   end
 end

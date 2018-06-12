@@ -1,6 +1,7 @@
 class Service < ActiveRecord::Base
   include AASM
   belongs_to :appliance
+  belongs_to :technician
 
   scope :latest, -> { order("created_at DESC") }
   scope :by_user, -> (user_id) { joins(:appliance)
@@ -43,5 +44,9 @@ class Service < ActiveRecord::Base
 
   def user_phone
     appliance.user_phone
+  end
+
+  def technician_name
+    technician.full_name
   end
 end
