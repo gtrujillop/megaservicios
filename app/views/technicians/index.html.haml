@@ -1,0 +1,26 @@
+.col-md-12
+  .jumbotron 
+    %h2.text-center Técnicos
+    %br
+    
+      =form_tag(technicians_path, method: "get", id: "search-form", class: "form-group") do
+        =text_field_tag :search, params[:search], placeholder: "Qué desea buscar", class: "form-control" , style: "display: inline-block;width: 30%;"
+        =submit_tag "Buscar", name:nil, class: 'btn btn-success', style: "display: inline-block;"
+    %br
+    .table-responsive
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Nombre
+            %th E-mail
+            %th Teléfono
+        - @technicians.each do |technician|
+          %tr
+            %td= technician.full_name
+            %td= technician.email
+            %td= technician.phone
+            %td= link_to 'Editar', edit_technician_path(technician), class: 'btn btn-info'
+            %td= link_to 'Eliminar', technician, :method => :delete, :data => { :confirm => 'Estas seguro?' }, :class => "btn btn-danger"
+    .text-right
+      =link_to "Registrar Técnico", new_technician_path, class: 'btn btn-success'
+%br

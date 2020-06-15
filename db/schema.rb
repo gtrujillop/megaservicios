@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514170419) do
+ActiveRecord::Schema.define(version: 20180612052835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,9 +97,20 @@ ActiveRecord::Schema.define(version: 20180514170419) do
     t.datetime "updated_at",                             null: false
     t.date     "next_service_date"
     t.string   "state",             default: "in_draft"
+    t.integer  "technician_id"
   end
 
   add_index "services", ["appliance_id"], name: "index_services_on_appliance_id", using: :btree
+  add_index "services", ["technician_id"], name: "index_services_on_technician_id", using: :btree
+
+  create_table "technicians", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "types", force: :cascade do |t|
     t.string   "name"
@@ -144,5 +155,6 @@ ActiveRecord::Schema.define(version: 20180514170419) do
   add_foreign_key "appliances", "types"
   add_foreign_key "appliances", "users"
   add_foreign_key "services", "appliances"
+  add_foreign_key "services", "technicians"
   add_foreign_key "user_roles", "users"
 end

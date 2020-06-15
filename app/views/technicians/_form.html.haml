@@ -1,0 +1,46 @@
+%h2.text-center 
+  =name 
+  Datos del Técnico
+%br
+= form_for @technician do |f|
+  - if @technician.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@technician.errors.count, "error")} prohibited this brand from being saved:"
+      %ul
+        - @technician.errors.full_messages.each do |msg|
+          %li= msg
+
+  .row
+    .col-sm-6
+      .form-group
+        %b Nombre:
+    .col-sm-6
+      .form-group
+        = f.text_field :first_name, class: 'form-control', required: true
+  .row
+    .col-sm-6
+      .form-group
+        %b Apellido:
+    .col-sm-6
+      .form-group
+        = f.text_field :last_name, class: 'form-control', required: true 
+  .row
+    .col-sm-6
+      .form-group
+        %b Correo:
+    .col-sm-6
+      .form-group
+        = f.text_field :email, class: 'form-control', required: true
+  .row
+    .col-sm-6
+      .form-group
+        %b Teléfono:
+    .col-sm-6
+      .from-group
+        = f.text_field :phone, class: 'form-control', required: true
+  %br
+  .col-sm-12
+    .actions.text-right
+      = f.submit 'Guardar', class: 'btn btn-success'
+      = link_to "Cancelar", technicians_path, class: 'btn btn-danger'
+  %br

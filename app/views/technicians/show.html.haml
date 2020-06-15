@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @technician.full_name
+%p
+  %b Correo:
+  = @technician.email
+%p
+  %b Teléfono:
+  = @technician.phone
+  
+= link_to 'Edit', edit_technician_path(@technician)
+\|
+= link_to 'Back', technicians_path

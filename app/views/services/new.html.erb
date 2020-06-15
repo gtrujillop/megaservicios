@@ -17,7 +17,6 @@
           </div>
         </div>
       </div>
-
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -33,7 +32,21 @@
           </div>
         </div>
       </div>
-
+      <div class="row">
+        <br/>
+        <div class="col-md-6">
+          <%= f.label 'Técnico', for: 'technician_id' %>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.select(:technician_id,nil,{}, class: 'form-control') do %>
+              <% @technicians.each do |technician| -%>
+                <%= content_tag(:option, technician.full_name, value: technician.id) %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-6">
           <%= f.label :comentarios, for: 'comments' %>

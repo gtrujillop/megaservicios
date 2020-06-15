@@ -16,6 +16,9 @@
                 Costo
               </th>
               <th>
+                Técnico
+              </th>
+              <th>
                 Comentario
               </th>
               <th>
@@ -34,6 +37,7 @@
                         appliance_path(id: service.appliance.id),
                         method: :get %></td>
                 <td><%= service.cost %></td>
+                <td><%= service.technician_name %></td>
                 <td><%= service.comments %></td>
                 <td><%= service.next_service_date.try(:strftime, "%d/%m/%Y") %></td>
                 <td>
