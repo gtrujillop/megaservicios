@@ -1,0 +1,122 @@
+// Place all the styles related to the dailys controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-mega-back {
+  margin-top: 12px;
+  float: right;
+}
+
+.icon-zoom {
+  font-size: 18px;
+  font-weight: normal;
+  color: rgb(94, 173, 247);
+}
+
+// Calendar
+.simple-calendar {
+  .day {}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+}
+
+
+.calendar {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #616B76;
+  text-align: center;
+  background-color: #fff;
+
+  .simple-calendar{
+    .calendar-heading{
+      font-size: 18px;
+      a{
+        display: inline-block;
+        padding: 15px;
+        text-decoration: none;
+      }
+
+      .icon {
+        font-size: 15px;
+      }
+    }
+    .day_number{
+      float: right;
+    }
+  
+    ul.services {
+      width: 100%;
+      
+      .items{
+        list-style: none;
+        text-align: left
+      }
+    }
+    .nav, .nav a {
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+    }
+    
+    caption {
+      margin: 0;
+      padding: 0;
+      width: 141px;
+      background: #A2ADBC;
+      color: #fff;
+      text-align: center;
+    }
+    
+    th {
+      color: #616B76;
+      background: #D9E2E1;
+    }
+    
+    .today, td.today a, td.today a:link, td.today a:visited {
+      color: #F6F4DA;
+      font-weight: bold;
+      background: #DF9496;
+    }
+    
+    td {
+      width: 20px;
+      height: 20px;
+      text-align: center;
+    }
+    
+    td a {
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+      height: 80px;
+    }
+    
+    td a:link, td a:visited {
+      color: #608194;
+    }
+    
+    td a:hover, td a:active {
+      color: #6aa3ae;
+    }
+  }
+}

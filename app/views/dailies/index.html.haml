@@ -1,0 +1,13 @@
+%h3 Servicios
+%br
+    
+.calendar
+  = month_calendar events: @services do |date, services|
+    = link_to daily_services_path(date) do
+      %span.day_number
+        = date.try(:strftime, "%d")
+      %ul.services
+        - services.each do |service|
+          %li.items
+            = service.appliance.user.full_name
+        

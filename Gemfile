@@ -46,6 +46,10 @@ gem 'groupdate'
 # for cron jobs in rails
 gem 'crono'
 gem 'delayed_job_active_record'
+
+# Calendar
+gem "simple_calendar", "~> 2.0"
+
 gem 'sendgrid-ruby'
 gem 'pg', '0.17.1'
 

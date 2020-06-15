@@ -1,0 +1,54 @@
+.row
+  .col-md-6
+    %h3 Servicios para el día: #{@date_services}
+  .col-md-6
+    = link_to "Regresar", dailies_index_path, class: 'btn btn-success btn-mega-back'
+
+%table.table.table-hover
+  %tr
+    %th
+      Estado      
+    %th
+      Tipo
+    %th
+      Marca  
+    %th
+      Modelo
+    %th
+      Comentario   
+    %th
+      Nombre
+    %th
+      Telefono  
+    %th
+      Dirección
+    %th
+      costo  
+    %th
+      %span   
+  - @day_services.each do |service|
+    %tr 
+      %td
+        -if service.may_complete?
+          = link_to "Completar", "/services/#{service.id}/complete", method: :put
+        -else
+          = link_to "Descompletar", "/services/#{service.id}/uncomplete", method: :put
+      %td 
+        = service.appliance.type.name
+      %td 
+        = service.appliance.brand.name
+      %td 
+        = service.appliance.model
+      %td
+        = service.comments   
+      %td
+        = service.appliance.user.full_name
+      %td
+        = service.appliance.user.phone
+      %td
+        = service.appliance.user.address
+      %td
+        = service.cost
+      %td
+        = link_to appliance_path(id: service.appliance.id), method: :get do
+          %i.glyphicon.glyphicon-zoom-in.icon-zoom

@@ -175,6 +175,8 @@ GEM
       ruby_http_client (~> 3.2)
       sinatra (>= 1.4.7, < 3)
     sexp_processor (4.9.0)
+    simple_calendar (2.2.7)
+      rails (>= 3.0)
     sinatra (1.4.8)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -238,6 +240,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sendgrid-ruby
+  simple_calendar (~> 2.0)
   spring
   toastr-rails
   turbolinks

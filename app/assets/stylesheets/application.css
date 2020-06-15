@@ -13,4 +13,6 @@
  *= require_self
  *= require main
  *= require toastr
+ *= require simple_calendar
+ *= require dailies
  */
